@@ -1,0 +1,16 @@
+## Напишите функцию print_operation_table(operation, num_rows=6, num_columns=6), которая принимает в качестве аргумента функцию, вычисляющую элемент по номеру строки и столбца. Аргументы num_rows и num_columns указывают число строк и столбцов таблицы, которые должны быть распечатаны. Нумерация строк и столбцов идет с единицы (подумайте, почему не с нуля). Примечание: бинарной операцией называется любая операция, у которой ровно два аргумента, как, например, у операции умножения.
+
+def print_operation_table(operation, num_rows=6, num_columns=6):
+    for row in range(1, num_rows + 1):
+        row_values = []
+        for col in range(1, num_columns + 1):
+            element = operation(row, col)
+            row_values.append(str(element))
+        print("\t".join(row_values))
+
+# Пример функции для вычисления элемента по номеру строки и столбца (умножение)
+def multiplication(row, col):
+    return row * col
+
+# Вызов функции с передачей функции умножения и заданным числом строк и столбцов
+print_operation_table(multiplication, num_rows=4, num_columns=5)
