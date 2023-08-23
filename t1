@@ -1,0 +1,52 @@
+phonebook = {}
+
+def add_contact(name, phone):
+    phonebook[name] = phone
+    print(f"Контакт {name} добавлен с номером {phone}")
+
+def update_contact(name, new_phone):
+    if name in phonebook:
+        phonebook[name] = new_phone
+        print(f"Номер контакта {name} обновлен на {new_phone}")
+    else:
+        print(f"Контакта {name} нет в справочнике")
+
+def delete_contact(name):
+    if name in phonebook:
+        del phonebook[name]
+        print(f"Контакт {name} удален из справочника")
+    else:
+        print(f"Контакта {name} нет в справочнике")
+
+def main():
+    while True:
+        print("\nТелефонный справочник:")
+        for name, phone in phonebook.items():
+            print(f"{name}: {phone}")
+
+        print("\n1. Добавить контакт")
+        print("2. Обновить номер контакта")
+        print("3. Удалить контакт")
+        print("4. Выход")
+
+        choice = input("Выберите действие: ")
+
+        if choice == "1":
+            name = input("Введите имя контакта: ")
+            phone = input("Введите номер телефона: ")
+            add_contact(name, phone)
+        elif choice == "2":
+            name = input("Введите имя контакта: ")
+            new_phone = input("Введите новый номер телефона: ")
+            update_contact(name, new_phone)
+        elif choice == "3":
+            name = input("Введите имя контакта для удаления: ")
+            delete_contact(name)
+        elif choice == "4":
+            print("Программа завершена.")
+            break
+        else:
+            print("Неверный выбор, попробуйте снова.")
+
+if __name__ == "__main__":
+    main()
